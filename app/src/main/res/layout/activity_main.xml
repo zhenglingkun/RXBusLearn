@@ -10,8 +10,14 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="zlk.com.rxbuslearn.MainActivity">
 
-    <TextView
+    <Button android:id="@+id/intent_bt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hello World!"/>
+
+    <TextView android:id="@+id/back_text_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+              android:layout_marginTop="10dp"
+        android:layout_below="@id/intent_bt"/>
 </RelativeLayout>
