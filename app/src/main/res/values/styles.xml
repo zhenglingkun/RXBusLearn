@@ -8,4 +8,18 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <!--输入支付密码框的 style-->
+    <style name="AppTheme.TvPayPwd" parent="@android:style/Widget.TextView">
+        <item name="android:layout_width">40dp</item>
+        <item name="android:layout_height">40dp</item>
+        <item name="android:layout_marginRight">2dp</item>
+        <item name="android:layout_marginLeft">2dp</item>
+        <item name="android:background">@drawable/selector_input_pay_pwd</item>
+        <item name="android:maxLength">1</item>
+        <item name="android:lines">1</item>
+        <item name="android:inputType">numberPassword</item>
+        <item name="android:gravity">center</item>
+        <item name="android:focusableInTouchMode">true</item>
+    </style>
+
 </resources>

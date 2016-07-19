@@ -80,10 +80,11 @@ public class PayPwdEditText extends EditText {
 
     @Override
     protected void onDraw(Canvas canvas) {
+//        super.onDraw(canvas);
 
-//        RectF rect = new RectF(0, 0, getWidth(), getHeight());
-//        borderPaint.setColor(Color.GRAY);
-//        canvas.drawRect(rect, borderPaint);
+        RectF rect = new RectF(0, 0, getWidth(), getHeight());
+        borderPaint.setColor(Color.GRAY);
+        canvas.drawRect(rect, borderPaint);
 //
 //        int width = getWidth();
 //        float totalWidth = (pwdRectWidth + pwdRectSpace) * pwdLength;
