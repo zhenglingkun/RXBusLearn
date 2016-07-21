@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <Button
+        android:id="@+id/delete_bank_card_bt"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@drawable/selector_dialog_bt"
+        android:textColor="@color/textColor_8"
+        android:textSize="@dimen/text_size_4"
+        android:text="@string/delete_bank_card_dialog"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:background="@color/lineColor"/>
+
+    <Button
+        android:id="@+id/cancel_bt"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:background="@drawable/selector_dialog_bt"
+        android:textColor="@color/textColor_2"
+        android:textSize="@dimen/text_size_4"
+        android:text="@string/cancel"/>
+
+</LinearLayout>

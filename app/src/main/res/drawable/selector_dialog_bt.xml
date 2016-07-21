@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--普通 Dialog Button 点击背景，无圆角设置-->
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item android:state_pressed="true">
+        <shape>
+            <solid android:color="#ffeeeeee"/>
+        </shape>
+    </item>
+    <item android:state_enabled="false">
+        <shape>
+            <solid android:color="#ffeeeeee"/>
+        </shape>
+    </item>
+    <item>
+        <shape>
+            <solid android:color="#fff5f5f5"/>
+        </shape>
+    </item>
+
+</selector>

@@ -43,24 +43,38 @@ public class LifecycleFragmentActivity extends AppCompatActivity {
     public void onClick(View view) {
         switch (view.getId()) {
             case R.id.add_bt:
-                addFragment(mCurrentFragment, mAddFragment);
-                mCurrentFragment = mAddFragment;
+
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .add(R.id.container_fragment, mAddFragment)
+                        .commit();
+
+//                addFragment(mCurrentFragment, mAddFragment);
+//                mCurrentFragment = mAddFragment;
                 break;
             case R.id.add1_bt:
-                addFragment(mCurrentFragment, mAddFragment1);
-                mCurrentFragment = mAddFragment1;
+
+                getSupportFragmentManager()
+                        .beginTransaction()
+                        .hide(mAddFragment)
+                        .add(R.id.container_fragment, mAddFragment1)
+                        .addToBackStack("fragment1")
+                        .commit();
+
+//                addFragment(mCurrentFragment, mAddFragment1);
+//                mCurrentFragment = mAddFragment1;
                 break;
             case R.id.replace_bt:
-                getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.container_fragment, new ReplaceFragment())
-                        .commit();
+//                getSupportFragmentManager()
+//                        .beginTransaction()
+//                        .replace(R.id.container_fragment, new ReplaceFragment())
+//                        .commit();
                 break;
             case R.id.replace1_bt:
-                getSupportFragmentManager()
-                        .beginTransaction()
-                        .replace(R.id.container_fragment, new AddFragment())
-                        .commit();
+//                getSupportFragmentManager()
+//                        .beginTransaction()
+//                        .replace(R.id.container_fragment, new AddFragment())
+//                        .commit();
                 break;
         }
     }
