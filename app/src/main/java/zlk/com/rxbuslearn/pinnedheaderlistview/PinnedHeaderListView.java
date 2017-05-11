@@ -5,8 +5,12 @@ import android.graphics.Canvas;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.*;
+import android.widget.AbsListView;
 import android.widget.AbsListView.OnScrollListener;
+import android.widget.AdapterView;
+import android.widget.HeaderViewListAdapter;
+import android.widget.ListAdapter;
+import android.widget.ListView;
 
 public class PinnedHeaderListView extends ListView implements OnScrollListener {
 
@@ -32,7 +36,6 @@ public class PinnedHeaderListView extends ListView implements OnScrollListener {
     private boolean mShouldPin = true;
     private int mCurrentSection = 0;
     private int mWidthMode;
-    private int mHeightMode;
 
     public PinnedHeaderListView(Context context) {
         super(context);
@@ -60,11 +63,15 @@ public class PinnedHeaderListView extends ListView implements OnScrollListener {
         super.setAdapter(adapter);
     }
 
+    private static int headerCount;
+
     @Override
     public void onScroll(AbsListView view, int firstVisibleItem, int visibleItemCount, int totalItemCount) {
         if (mOnScrollListener != null) {
             mOnScrollListener.onScroll(view, firstVisibleItem, visibleItemCount, totalItemCount);
         }
+
+        headerCount = getHeaderViewsCount();
 
         if (mAdapter == null || mAdapter.getCount() == 0 || !mShouldPin || (firstVisibleItem < getHeaderViewsCount())) {
             mCurrentHeader = null;
@@ -163,9 +170,7 @@ public class PinnedHeaderListView extends ListView implements OnScrollListener {
     @Override
     protected void onMeasure(int widthMeasureSpec, int heightMeasureSpec) {
         super.onMeasure(widthMeasureSpec, heightMeasureSpec);
-
         mWidthMode = MeasureSpec.getMode(widthMeasureSpec);
-        mHeightMode = MeasureSpec.getMode(heightMeasureSpec);
     }
 
     public void setOnItemClickListener(OnItemClickListener listener) {
@@ -175,6 +180,12 @@ public class PinnedHeaderListView extends ListView implements OnScrollListener {
     public static abstract class OnItemClickListener implements AdapterView.OnItemClickListener {
         @Override
         public void onItemClick(AdapterView<?> adapterView, View view, int rawPosition, long id) {
+            //header view
+            if (rawPosition < headerCount) {
+                onHeaderClick(adapterView, view, rawPosition, id);
+                return;
+            }
+
             SectionedBaseAdapter adapter;
             if (adapterView.getAdapter().getClass().equals(HeaderViewListAdapter.class)) {
                 HeaderViewListAdapter wrapperAdapter = (HeaderViewListAdapter) adapterView.getAdapter();
@@ -182,12 +193,21 @@ public class PinnedHeaderListView extends ListView implements OnScrollListener {
             } else {
                 adapter = (SectionedBaseAdapter) adapterView.getAdapter();
             }
+
+            //footer view
+            if (adapter != null && rawPosition >= headerCount + adapter.getCount()) {
+                onFooterClick(adapterView, view, rawPosition - headerCount - adapter.getCount(), id);
+                return;
+            }
+            //section header or section item
+            rawPosition = rawPosition - headerCount;
+
             int section = adapter.getSectionForPosition(rawPosition);
             int position = adapter.getPositionInSectionForPosition(rawPosition);
 
-            if (position == -1) {
+            if (position == -1) { //click section header
                 onSectionClick(adapterView, view, section, id);
-            } else {
+            } else { //click section item
                 onItemClick(adapterView, view, section, position, id);
             }
         }
@@ -195,6 +215,10 @@ public class PinnedHeaderListView extends ListView implements OnScrollListener {
         public abstract void onItemClick(AdapterView<?> adapterView, View view, int section, int position, long id);
 
         public abstract void onSectionClick(AdapterView<?> adapterView, View view, int section, long id);
+
+        public abstract void onHeaderClick(AdapterView<?> adapterView, View view, int rawPosition, long id);
+
+        public abstract void onFooterClick(AdapterView<?> adapterView, View view, int rawPosition, long id);
 
     }
 }
