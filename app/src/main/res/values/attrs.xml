@@ -1,13 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <declare-styleable name="PayPwdEditText">
-        <attr name="borderColor" format="color"/>
-        <attr name="borderWidth" format="dimension"/>
-        <attr name="passwordColor" format="color"/>
-        <attr name="passwordWidth" format="dimension"/>
-        <attr name="pwdRectWidth" format="dimension"/>
-        <attr name="pwdRectBgColor" format="color"/>
-        <attr name="pwdRectSpace" format="dimension"/>
-        <attr name="pwdLength" format="integer"/>
-    </declare-styleable>
 </resources>
