@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/RXBusLearn.iml" filepath="$PROJECT_DIR$/RXBusLearn.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/swipetoloadlayout/swipetoloadlayout.iml" filepath="$PROJECT_DIR$/swipetoloadlayout/swipetoloadlayout.iml" />
     </modules>
   </component>
 </project>

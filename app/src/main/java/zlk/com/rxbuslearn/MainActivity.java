@@ -2,6 +2,7 @@ package zlk.com.rxbuslearn;
 
 import android.content.ContentResolver;
 import android.content.Context;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.provider.ContactsContract;
@@ -23,6 +24,7 @@ import zlk.com.rxbuslearn.pinnedheaderlistview.LetterAdapter;
 import zlk.com.rxbuslearn.pinnedheaderlistview.LetterBean;
 import zlk.com.rxbuslearn.pinnedheaderlistview.PinnedHeaderBean;
 import zlk.com.rxbuslearn.pinnedheaderlistview.PinnedHeaderListView;
+import zlk.com.rxbuslearn.swipetoloadlayout.SwipeToLoadLayoutActivity;
 import zlk.com.rxbuslearn.util.FirstLetterUtil;
 
 public class MainActivity extends AppCompatActivity {
@@ -37,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.intent_bt).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                // intent to SwipeToLoadLayout
+                startActivity(new Intent(MainActivity.this, SwipeToLoadLayoutActivity.class));
             }
         });
 

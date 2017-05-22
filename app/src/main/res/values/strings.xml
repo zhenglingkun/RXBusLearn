@@ -4,6 +4,7 @@
     <string name="dialog_learn">Dialog Learn</string>
     <string name="delete_bank_card_dialog">删除银行卡</string>
     <string name="cancel">取消</string>
+    <string name="learn">库存总量\n%1$d</string>
     <string-array name="letters">
         <item>A</item>
         <item>B</item>
