@@ -18,6 +18,9 @@
         <activity
             android:name=".swipetoloadlayout.SwipeToLoadLayoutActivity"
             android:launchMode="singleTop"/>
+        <activity
+            android:name=".slidedel.SlidingDelActivity"
+            android:launchMode="singleTop"/>
     </application>
 
 </manifest>

@@ -24,7 +24,7 @@ import zlk.com.rxbuslearn.pinnedheaderlistview.LetterAdapter;
 import zlk.com.rxbuslearn.pinnedheaderlistview.LetterBean;
 import zlk.com.rxbuslearn.pinnedheaderlistview.PinnedHeaderBean;
 import zlk.com.rxbuslearn.pinnedheaderlistview.PinnedHeaderListView;
-import zlk.com.rxbuslearn.swipetoloadlayout.SwipeToLoadLayoutActivity;
+import zlk.com.rxbuslearn.slidedel.SlidingDelActivity;
 import zlk.com.rxbuslearn.util.FirstLetterUtil;
 
 public class MainActivity extends AppCompatActivity {
@@ -39,8 +39,10 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.intent_bt).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, SlidingDelActivity.class));
                 // intent to SwipeToLoadLayout
-                startActivity(new Intent(MainActivity.this, SwipeToLoadLayoutActivity.class));
+//                startActivity(new Intent(MainActivity.this, SwipeToLoadLayoutActivity.class));
+
             }
         });
 
