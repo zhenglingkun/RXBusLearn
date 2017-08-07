@@ -21,6 +21,7 @@
         <activity
             android:name=".slidedel.SlidingDelActivity"
             android:launchMode="singleTop"/>
+        <activity android:name=".edittextsearch.EditSearchActivity"/>
     </application>
 
 </manifest>
