@@ -18,13 +18,13 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
+import zlk.com.rxbuslearn.audio.AudioActivity;
 import zlk.com.rxbuslearn.pinnedheaderlistview.ContactPinnedAdapter;
 import zlk.com.rxbuslearn.pinnedheaderlistview.CustomerBean;
 import zlk.com.rxbuslearn.pinnedheaderlistview.LetterAdapter;
 import zlk.com.rxbuslearn.pinnedheaderlistview.LetterBean;
 import zlk.com.rxbuslearn.pinnedheaderlistview.PinnedHeaderBean;
 import zlk.com.rxbuslearn.pinnedheaderlistview.PinnedHeaderListView;
-import zlk.com.rxbuslearn.slidedel.SlidingDelActivity;
 import zlk.com.rxbuslearn.util.FirstLetterUtil;
 
 public class MainActivity extends AppCompatActivity {
@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.intent_bt).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, SlidingDelActivity.class));
+                startActivity(new Intent(MainActivity.this, AudioActivity.class));
                 // intent to SwipeToLoadLayout
 //                startActivity(new Intent(MainActivity.this, SwipeToLoadLayoutActivity.class));
 
