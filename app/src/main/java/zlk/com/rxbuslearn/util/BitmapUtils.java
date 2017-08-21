@@ -23,9 +23,17 @@ public class BitmapUtils {
             int bmpWidth = bmp.getWidth();
             int bmpHeight = bmp.getHeight();
 
-            int longerW = width * Math.max(bmpWidth, bmpHeight) / Math.min(bmpWidth, bmpHeight);
-            int scaledWidth = bmpWidth > bmpHeight ? longerW : width;
-            int scaledHeight = bmpWidth > bmpHeight ? height : longerW;
+            int scaledWidth;
+            int scaledHeight;
+            if (bmpWidth > bmpHeight) {
+                int longerW = height * Math.max(bmpWidth, bmpHeight) / Math.min(bmpWidth, bmpHeight);
+                scaledWidth = bmpWidth > bmpHeight ? width : longerW;
+                scaledHeight = bmpWidth > bmpHeight ? longerW : height;
+            } else {
+                int longerW = width * Math.max(bmpWidth, bmpHeight) / Math.min(bmpWidth, bmpHeight);
+                scaledWidth = bmpWidth > bmpHeight ? longerW : width;
+                scaledHeight = bmpWidth > bmpHeight ? height : longerW;
+            }
             Bitmap scaledBitmap = Bitmap.createScaledBitmap(bmp, scaledWidth, scaledHeight, true);
 
             int xTopLeft = (scaledWidth - width) / 2;
