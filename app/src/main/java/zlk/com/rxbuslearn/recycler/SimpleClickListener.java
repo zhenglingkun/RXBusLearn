@@ -17,7 +17,7 @@ public abstract class SimpleClickListener implements OnItemTouchListener {
     private RecyclerView recyclerView;
     private Set<Integer> childClickViewIds;
     private Set<Integer> longClickViewIds;
-    protected BaseQuickAdapter baseQuickAdapter;
+    protected BaseHeaderCountAdapter baseQuickAdapter;
     public static String TAG = "SimpleClickListener";
     private boolean mIsPrepressed = false;
     private boolean mIsShowPress = false;
@@ -29,8 +29,9 @@ public abstract class SimpleClickListener implements OnItemTouchListener {
     public boolean onInterceptTouchEvent(RecyclerView rv, MotionEvent e) {
         if (this.recyclerView == null) {
             this.recyclerView = rv;
-            this.baseQuickAdapter = (BaseQuickAdapter) this.recyclerView.getAdapter();
-            this.mGestureDetector = new GestureDetectorCompat(this.recyclerView.getContext(), new SimpleClickListener.ItemTouchHelperGestureListener(this.recyclerView));
+            this.baseQuickAdapter = (BaseHeaderCountAdapter) this.recyclerView.getAdapter();
+            this.mGestureDetector = new GestureDetectorCompat(this.recyclerView.getContext(),
+                    new SimpleClickListener.ItemTouchHelperGestureListener(this.recyclerView));
         }
 
         if (!this.mGestureDetector.onTouchEvent(e) && e.getActionMasked() == 1 && this.mIsShowPress) {
@@ -62,13 +63,13 @@ public abstract class SimpleClickListener implements OnItemTouchListener {
 
     }
 
-    public abstract void onItemClick(BaseQuickAdapter var1, View var2, int var3);
+    public abstract void onItemClick(BaseHeaderCountAdapter var1, View var2, int var3);
 
-    public abstract void onItemLongClick(BaseQuickAdapter var1, View var2, int var3);
+    public abstract void onItemLongClick(BaseHeaderCountAdapter var1, View var2, int var3);
 
-    public abstract void onItemChildClick(BaseQuickAdapter var1, View var2, int var3);
+    public abstract void onItemChildClick(BaseHeaderCountAdapter var1, View var2, int var3);
 
-    public abstract void onItemChildLongClick(BaseQuickAdapter var1, View var2, int var3);
+    public abstract void onItemChildLongClick(BaseHeaderCountAdapter var1, View var2, int var3);
 
     public boolean inRangeOfView(View view, MotionEvent ev) {
         int[] location = new int[2];
@@ -78,7 +79,8 @@ public abstract class SimpleClickListener implements OnItemTouchListener {
             view.getLocationOnScreen(location);
             int x = location[0];
             int y = location[1];
-            return ev.getRawX() >= (float) x && ev.getRawX() <= (float) (x + view.getWidth()) && ev.getRawY() >= (float) y && ev.getRawY() <= (float) (y + view.getHeight());
+            return ev.getRawX() >= (float) x && ev.getRawX() <= (float) (x + view.getWidth())
+                    && ev.getRawY() >= (float) y && ev.getRawY() <= (float) (y + view.getHeight());
         }
     }
 
@@ -88,7 +90,7 @@ public abstract class SimpleClickListener implements OnItemTouchListener {
                 return false;
             }
 
-            this.baseQuickAdapter = (BaseQuickAdapter) this.recyclerView.getAdapter();
+            this.baseQuickAdapter = (BaseHeaderCountAdapter) this.recyclerView.getAdapter();
         }
 
         int type = this.baseQuickAdapter.getItemViewType(position);
@@ -144,7 +146,8 @@ public abstract class SimpleClickListener implements OnItemTouchListener {
                         if (SimpleClickListener.this.inRangeOfView(childView, e) && childView.isEnabled()) {
                             SimpleClickListener.this.setPressViewHotSpot(e, childView);
                             childView.setPressed(true);
-                            SimpleClickListener.this.onItemChildClick(SimpleClickListener.this.baseQuickAdapter, childView, vh.getLayoutPosition() - SimpleClickListener.this.baseQuickAdapter.getHeaderLayoutCount());
+                            SimpleClickListener.this.onItemChildClick(SimpleClickListener.this.baseQuickAdapter,
+                                    childView, vh.getLayoutPosition() - SimpleClickListener.this.baseQuickAdapter.getHeadersCount());
                             this.resetPressedView(childView);
                             return true;
                         }
@@ -161,7 +164,8 @@ public abstract class SimpleClickListener implements OnItemTouchListener {
                         childView.setPressed(false);
                     }
 
-                    SimpleClickListener.this.onItemClick(SimpleClickListener.this.baseQuickAdapter, pressedView, vh.getLayoutPosition() - SimpleClickListener.this.baseQuickAdapter.getHeaderLayoutCount());
+                    SimpleClickListener.this.onItemClick(SimpleClickListener.this.baseQuickAdapter,
+                            pressedView, vh.getLayoutPosition() - SimpleClickListener.this.baseQuickAdapter.getHeadersCount());
                 } else {
                     SimpleClickListener.this.setPressViewHotSpot(e, pressedView);
                     SimpleClickListener.this.mPressedView.setPressed(true);
@@ -172,7 +176,8 @@ public abstract class SimpleClickListener implements OnItemTouchListener {
                         childView.setPressed(false);
                     }
 
-                    SimpleClickListener.this.onItemClick(SimpleClickListener.this.baseQuickAdapter, pressedView, vh.getLayoutPosition() - SimpleClickListener.this.baseQuickAdapter.getHeaderLayoutCount());
+                    SimpleClickListener.this.onItemClick(SimpleClickListener.this.baseQuickAdapter,
+                            pressedView, vh.getLayoutPosition() - SimpleClickListener.this.baseQuickAdapter.getHeadersCount());
                 }
 
                 this.resetPressedView(pressedView);
@@ -214,7 +219,7 @@ public abstract class SimpleClickListener implements OnItemTouchListener {
                                 childView = SimpleClickListener.this.mPressedView.findViewById(((Integer) it.next()).intValue());
                                 if (SimpleClickListener.this.inRangeOfView(childView, e) && childView.isEnabled()) {
                                     SimpleClickListener.this.setPressViewHotSpot(e, childView);
-                                    SimpleClickListener.this.onItemChildLongClick(SimpleClickListener.this.baseQuickAdapter, childView, vh.getLayoutPosition() - SimpleClickListener.this.baseQuickAdapter.getHeaderLayoutCount());
+                                    SimpleClickListener.this.onItemChildLongClick(SimpleClickListener.this.baseQuickAdapter, childView, vh.getLayoutPosition() - SimpleClickListener.this.baseQuickAdapter.getHeadersCount());
                                     childView.setPressed(true);
                                     SimpleClickListener.this.mIsShowPress = true;
                                     isChildLongClick = true;
@@ -224,7 +229,7 @@ public abstract class SimpleClickListener implements OnItemTouchListener {
                         }
 
                         if (!isChildLongClick) {
-                            SimpleClickListener.this.onItemLongClick(SimpleClickListener.this.baseQuickAdapter, SimpleClickListener.this.mPressedView, vh.getLayoutPosition() - SimpleClickListener.this.baseQuickAdapter.getHeaderLayoutCount());
+                            SimpleClickListener.this.onItemLongClick(SimpleClickListener.this.baseQuickAdapter, SimpleClickListener.this.mPressedView, vh.getLayoutPosition() - SimpleClickListener.this.baseQuickAdapter.getHeadersCount());
                             SimpleClickListener.this.setPressViewHotSpot(e, SimpleClickListener.this.mPressedView);
                             SimpleClickListener.this.mPressedView.setPressed(true);
                             it = SimpleClickListener.this.longClickViewIds.iterator();
