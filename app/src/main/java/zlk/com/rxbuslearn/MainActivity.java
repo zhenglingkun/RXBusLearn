@@ -46,6 +46,26 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+//        product_rv.addOnScrollListener(new RecyclerView.OnScrollListener() {
+//            @Override
+//            public void onScrolled(RecyclerView recyclerView, int dx, int dy) {
+//                int pastVisibleItems = mProductLvManager.findFirstVisibleItemPosition(); // 顶部 item 显示的 position
+//
+//                View transInfoView = recyclerView.findChildViewUnder(mClassifyTitleHeaderView.getMeasuredWidth() / 2,
+//                        mClassifyTitleHeaderView.getMeasuredHeight() + 1);
+//                if (transInfoView != null) {
+//                    int dealtY = transInfoView.getTop() - mClassifyTitleHeaderView.getMeasuredHeight();
+//                    if (dealtY < 0) {
+//                        mClassifyTitleHeaderView.setVisibility(View.VISIBLE);
+//                    } else {
+//                        if (pastVisibleItems == 0) {
+//                            mClassifyTitleHeaderView.setVisibility(View.GONE);
+//                        }
+//                    }
+//                }
+//            }
+//        });
+
         pinnedHeaderLvLearn();
     }
 
@@ -120,6 +140,7 @@ public class MainActivity extends AppCompatActivity {
 
     /**
      * 获取通讯录联系人
+     *
      * @param customerBeanList
      */
     private void initContactList(List<CustomerBean> customerBeanList) {
