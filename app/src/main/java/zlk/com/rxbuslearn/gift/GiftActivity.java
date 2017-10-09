@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 
 import java.io.IOException;
 
+import pl.droidsonroids.gif.AnimationListener;
 import pl.droidsonroids.gif.GifDrawable;
 import pl.droidsonroids.gif.GifImageView;
 import zlk.com.rxbuslearn.R;
@@ -25,6 +26,12 @@ public class GiftActivity extends AppCompatActivity {
         try {
             GifDrawable gifDrawable = new GifDrawable(getAssets(), "gif_3.gif");
             gv.setImageDrawable(gifDrawable);
+            gifDrawable.addAnimationListener(new AnimationListener() {
+                @Override
+                public void onAnimationCompleted(int loopNumber) {
+                    // to to your code
+                }
+            });
         } catch (IOException e) {
             e.printStackTrace();
         }
