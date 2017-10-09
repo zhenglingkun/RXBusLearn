@@ -18,7 +18,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-import zlk.com.rxbuslearn.audio.AudioActivity;
+import zlk.com.rxbuslearn.gift.GiftActivity;
 import zlk.com.rxbuslearn.pinnedheaderlistview.ContactPinnedAdapter;
 import zlk.com.rxbuslearn.pinnedheaderlistview.CustomerBean;
 import zlk.com.rxbuslearn.pinnedheaderlistview.LetterAdapter;
@@ -39,7 +39,7 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.intent_bt).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, AudioActivity.class));
+                startActivity(new Intent(MainActivity.this, GiftActivity.class));
                 // intent to SwipeToLoadLayout
 //                startActivity(new Intent(MainActivity.this, SwipeToLoadLayoutActivity.class));
 
@@ -66,7 +66,7 @@ public class MainActivity extends AppCompatActivity {
 //            }
 //        });
 
-        pinnedHeaderLvLearn();
+//        pinnedHeaderLvLearn();
     }
 
     private void pinnedHeaderLvLearn() {
