@@ -23,7 +23,7 @@
             android:launchMode="singleTop"/>
         <activity android:name=".edittextsearch.EditSearchActivity"/>
         <activity android:name=".audio.AudioActivity"/>
-        <activity android:name=".gift.GiftActivity"/>
+        <activity android:name=".gift.GifActivity"/>
     </application>
 
 </manifest>

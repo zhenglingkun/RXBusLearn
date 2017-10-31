@@ -3,6 +3,7 @@ package zlk.com.rxbuslearn.gift;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 
 import java.io.IOException;
 
@@ -16,7 +17,9 @@ import zlk.com.rxbuslearn.R;
  * this is a xxx for
  */
 
-public class GiftActivity extends AppCompatActivity {
+public class GifActivity extends AppCompatActivity {
+
+    private static final String TAG = GifActivity.class.getSimpleName();
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -29,6 +32,7 @@ public class GiftActivity extends AppCompatActivity {
             gifDrawable.addAnimationListener(new AnimationListener() {
                 @Override
                 public void onAnimationCompleted(int loopNumber) {
+                    Log.d(TAG, "onAnimationCompleted() called with: loopNumber = [" + loopNumber + "]");
                     // to to your code
                 }
             });
