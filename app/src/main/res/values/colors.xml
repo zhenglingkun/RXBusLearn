@@ -7,4 +7,8 @@
     <color name="textColor_8">#FFDE4044</color>
     <color name="lineColor">#dddddd</color>
     <color name="textColor_2">#FF666666</color>
+
+    <color name="default_text">#333333</color>
+    <color name="divider">#E2E2E4</color>
+    <color name="dialog_sure_text_color">#ff6634</color>
 </resources>

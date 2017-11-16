@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:background="@drawable/circular_corner_dialog"
+              android:orientation="vertical"
+              android:paddingTop="20dp">
+
+    <TextView
+        android:id="@+id/tv_title"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="15dp"
+        android:gravity="center"
+        android:minWidth="240dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:text="kenge"
+        android:textColor="@color/default_text"
+        android:textSize="18sp"/>
+
+    <TextView
+        android:id="@+id/tv_info"
+        android:layout_width="240dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:minWidth="240dp"
+        android:paddingLeft="8dp"
+        android:paddingRight="8dp"
+        android:text="info"
+        android:textColor="@color/default_text"
+        android:textSize="12sp"/>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1px"
+        android:layout_marginTop="24dp"
+        android:background="@color/divider"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_cancel"
+            android:layout_width="115dp"
+            android:layout_height="40dp"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:text="取消"
+            android:textColor="@color/default_text"/>
+
+        <View
+            android:id="@+id/line"
+            android:layout_width="1px"
+            android:layout_height="40dp"
+            android:background="@color/divider"/>
+
+        <Button
+            android:id="@+id/btn_confirm"
+            android:layout_width="115dp"
+            android:layout_height="40dp"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:enabled="true"
+            android:foreground="?android:attr/selectableItemBackground"
+            android:text="确定"
+            android:textColor="@color/dialog_sure_text_color"/>
+    </LinearLayout>
+</LinearLayout>
