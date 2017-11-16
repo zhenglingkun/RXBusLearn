@@ -24,6 +24,7 @@
         <activity android:name=".edittextsearch.EditSearchActivity"/>
         <activity android:name=".audio.AudioActivity"/>
         <activity android:name=".gift.GifActivity"/>
+        <activity android:name=".notice.NoticeActivity"/>
     </application>
 
 </manifest>
