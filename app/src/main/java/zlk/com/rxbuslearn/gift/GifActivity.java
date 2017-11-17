@@ -27,7 +27,7 @@ public class GifActivity extends AppCompatActivity {
         setContentView(R.layout.activity_gift);
         GifImageView gv = (GifImageView) findViewById(R.id.gv_test1);
         try {
-            GifDrawable gifDrawable = new GifDrawable(getAssets(), "gif_3.gif");
+            GifDrawable gifDrawable = new GifDrawable(getResources(), R.mipmap.gif_3);
             gv.setImageDrawable(gifDrawable);
             gifDrawable.addAnimationListener(new AnimationListener() {
                 @Override
@@ -39,7 +39,5 @@ public class GifActivity extends AppCompatActivity {
         } catch (IOException e) {
             e.printStackTrace();
         }
-//        GiftView gv = (GiftView) findViewById(R.id.gv_test);
-//        gv.setMovieResource(R.raw.gif_3);
     }
 }
