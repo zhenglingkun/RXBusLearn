@@ -18,7 +18,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.List;
 
-import zlk.com.rxbuslearn.gift.GifActivity;
+import zlk.com.rxbuslearn.expandablelistview.ExpandableListViewActivity;
 import zlk.com.rxbuslearn.pinnedheaderlistview.ContactPinnedAdapter;
 import zlk.com.rxbuslearn.pinnedheaderlistview.CustomerBean;
 import zlk.com.rxbuslearn.pinnedheaderlistview.LetterAdapter;
@@ -39,10 +39,10 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.intent_bt).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(MainActivity.this, GifActivity.class));
+                startActivity(new Intent(MainActivity.this, ExpandableListViewActivity.class));
+//                startActivity(new Intent(MainActivity.this, GifActivity.class));
                 // intent to SwipeToLoadLayout
 //                startActivity(new Intent(MainActivity.this, SwipeToLoadLayoutActivity.class));
-
             }
         });
 

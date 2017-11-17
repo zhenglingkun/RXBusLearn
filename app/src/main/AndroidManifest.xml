@@ -25,6 +25,7 @@
         <activity android:name=".audio.AudioActivity"/>
         <activity android:name=".gift.GifActivity"/>
         <activity android:name=".notice.NoticeActivity"/>
+        <activity android:name=".expandablelistview.ExpandableListViewActivity"/>
     </application>
 
 </manifest>
