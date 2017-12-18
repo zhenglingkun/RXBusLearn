@@ -34,6 +34,10 @@
         <activity android:name=".notice.NoticeActivity"/>
         <activity android:name=".expandablelistview.ExpandableListViewActivity"/>
         <activity android:name=".img.ImgSelectActivity"/>
+        <activity android:name=".scan.ScanViewActivity"/>
+        <activity android:name=".scan.ScanHalfScreenActivity"/>
+        <activity android:name=".scan.list.ScanListActivity"/>
+        <activity android:name=".scan.androidzxing.test.AndroidZXingActivity"/>
     </application>
 
 </manifest>

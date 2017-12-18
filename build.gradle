@@ -16,6 +16,7 @@ buildscript {
 allprojects {
     repositories {
         jcenter()
+        maven { url 'http://10.199.129.26:8081/nexus/content/groups/public/' }
     }
 }
 
