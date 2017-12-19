@@ -69,6 +69,9 @@ public final class ScannerOptions {
     private double cameraZoomRatio;//相机变焦比率
     private ViewfinderCallback viewfinderCallback;
 
+    private boolean laserLineCenterVertical = false; // 扫描线是否居中显示，一但为true，扫描线上下移动的设置将会失效，全屏扫描失效
+    private int otherFrameBgRes = 0; //  扫描框其它区域的背景色，为 0 时不绘制；
+
     protected ScannerOptions() {
     }
 
@@ -182,6 +185,14 @@ public final class ScannerOptions {
 
     public double getCameraZoomRatio() {
         return cameraZoomRatio;
+    }
+
+    public boolean isLaserLineCenterVertical() {
+        return laserLineCenterVertical;
+    }
+
+    public int getOtherFrameBgRes() {
+        return otherFrameBgRes;
     }
 
     public ViewfinderCallback getViewfinderCallback() {
@@ -507,6 +518,16 @@ public final class ScannerOptions {
 
         public Builder setViewfinderCallback(ViewfinderCallback callback) {
             options.viewfinderCallback = callback;
+            return this;
+        }
+
+        public Builder setLaserLineCenterVertical(boolean laserLineCenterVertical) {
+            options.laserLineCenterVertical = laserLineCenterVertical;
+            return this;
+        }
+
+        public Builder setOtherFrameBgRes(int otherFrameBgRes) {
+            options.otherFrameBgRes = otherFrameBgRes;
             return this;
         }
     }

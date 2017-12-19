@@ -11,4 +11,6 @@
     <color name="default_text">#333333</color>
     <color name="divider">#E2E2E4</color>
     <color name="dialog_sure_text_color">#ff6634</color>
+    <color name="orange_light">#33FF6633</color>
+    <color name="viewfinder_mask">#60000000</color>
 </resources>

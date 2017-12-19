@@ -71,6 +71,7 @@ final class ViewfinderView extends View {
 
     void setCameraManager(CameraManager cameraManager) {
         this.cameraManager = cameraManager;
+//        isFirst = false;
     }
 
     void setScannerOptions(ScannerOptions scannerOptions) {
@@ -99,7 +100,7 @@ final class ViewfinderView extends View {
             return;
         }
         //全屏不绘制
-        if (!scannerOptions.isScanFullScreen()) {
+        if (!scannerOptions.isScanFullScreen() || scannerOptions.getOtherFrameBgRes() != 0) {
             drawMask(canvas, frame);// 绘制扫描框以外4个区域
         }
         // 如果有二维码结果的Bitmap，在扫取景框内绘制不透明的result Bitmap
@@ -112,12 +113,19 @@ final class ViewfinderView extends View {
             if (!scannerOptions.isFrameCornerHide())
                 drawFrameCorner(canvas, frame);//绘制扫描框4角
             drawText(canvas, frame);// 画扫描框下面的字
-            if (!scannerOptions.isLaserMoveFullScreen()) {
+            if (scannerOptions.isLaserLineCenterVertical()) {
+                if (laserLineTop == 0) {
+                    laserLineTop = (frame.top + (frame.bottom - frame.top) / 2) - dp2px(scannerOptions.getLaserLineHeight()) / 2;
+                }
                 drawLaserLine(canvas, frame);//绘制扫描框内扫描线
-                moveLaserSpeed(frame);//计算扫描框内移动位置
             } else {
-                moveLaserSpeedFullScreen(cameraManager.getScreenResolution());//计算全屏移动位置
-                drawLaserLineFullScreen(canvas, cameraManager.getScreenResolution());//绘制全屏扫描线
+                if (!scannerOptions.isLaserMoveFullScreen()) {
+                    drawLaserLine(canvas, frame);//绘制扫描框内扫描线
+                    moveLaserSpeed(frame);//计算扫描框内移动位置
+                } else {
+                    moveLaserSpeedFullScreen(cameraManager.getScreenResolution());//计算全屏移动位置
+                    drawLaserLineFullScreen(canvas, cameraManager.getScreenResolution());//绘制全屏扫描线
+                }
             }
             if (scannerOptions.getViewfinderCallback() != null) {
                 scannerOptions.getViewfinderCallback().onDraw(canvas, frame);
@@ -168,7 +176,11 @@ final class ViewfinderView extends View {
     private void drawMask(Canvas canvas, Rect frame) {
         int width = canvas.getWidth();
         int height = canvas.getHeight();
-        paint.setColor(resultBitmap != null ? resultColor : maskColor);
+        if (scannerOptions.getOtherFrameBgRes() != 0) {
+            paint.setColor(scannerOptions.getOtherFrameBgRes());
+        } else {
+            paint.setColor(resultBitmap != null ? resultColor : maskColor);
+        }
         canvas.drawRect(0, 0, width, frame.top, paint);
         canvas.drawRect(0, frame.top, frame.left, frame.bottom + 1, paint);
         canvas.drawRect(frame.right + 1, frame.top, width, frame.bottom + 1, paint);
@@ -267,8 +279,7 @@ final class ViewfinderView extends View {
         if (scannerOptions.getLaserStyle() == ScannerOptions.LaserStyle.COLOR_LINE) {
             paint.setStyle(Paint.Style.FILL);
             paint.setColor(scannerOptions.getLaserLineColor());// 设置扫描线颜色
-            canvas.drawRect(frame.left, laserLineTop, frame.right
-                    , laserLineTop + laserLineHeight, paint);
+            canvas.drawRect(frame.left, laserLineTop, frame.right, laserLineTop + laserLineHeight, paint);
         } else {
             if (laserLineBitmap == null)//图片资源文件转为 Bitmap
                 laserLineBitmap = BitmapFactory.decodeResource(getResources(), scannerOptions.getLaserLineResId());

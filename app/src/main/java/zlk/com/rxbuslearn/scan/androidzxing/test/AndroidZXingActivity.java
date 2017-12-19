@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.Toast;
 
@@ -42,35 +43,16 @@ public class AndroidZXingActivity extends AppCompatActivity implements OnScanner
                 .setFrameCornerWidth(2)
                 .setFrameCornerColor(0xff06c1ae)
                 .setFrameCornerInside(true)
-
-//                .setLaserLineColor(0xff06c1ae)
-//                .setLaserLineHeight(18)
-
-//                .setLaserStyle(ScannerOptions.LaserStyle.RES_LINE,R.mipmap.wx_scan_line)
-
-//                .setLaserStyle(ScannerOptions.LaserStyle.RES_GRID, R.mipmap.zfb_grid_scan_line)//网格图
-//                .setFrameCornerColor(0xFF26CEFF)//支付宝颜色
-
-                .setScanFullScreen(true)
-
-//                .setFrameHide(false)
+                .setLaserLineCenterVertical(true)
+                .setOtherFrameBgRes(ContextCompat.getColor(this, R.color.viewfinder_mask))
+                .setLaserLineColor(ContextCompat.getColor(this, R.color.orange_light))
+                .setLaserLineHeight(getResources().getDimensionPixelSize(R.dimen.dp6))
+                .setScanFullScreen(false)
                 .setFrameCornerHide(false)
-//                .setLaserMoveFullScreen(false)
-
-//                .setViewfinderCallback(new ScannerOptions.ViewfinderCallback() {
-//                    @Override
-//                    public void onDraw(Canvas canvas, Rect frame) {
-//                        Bitmap bmp = BitmapFactory.decodeResource(getResources(), R.mipmap.connect_logo);
-//                        canvas.drawBitmap(bmp, frame.right / 2, frame.top - bmp.getHeight(), null);
-//                    }
-//                })
-
-                .setScanMode(Scanner.ScanMode.PRODUCT_MODE)
+                .setScanMode(Scanner.ScanMode.ONE_D_MODE)
                 .setTipText("请联系其它已添加该设备用户获取二维码")
                 .setTipTextSize(19)
-                .setTipTextColor(getResources().getColor(R.color.colorAccent))
-//                .setCameraZoomRatio(2)
-        ;
+                .setTipTextColor(getResources().getColor(R.color.colorAccent));
 
         mScannerView.setScannerOptions(builder.build());
     }
@@ -88,7 +70,7 @@ public class AndroidZXingActivity extends AppCompatActivity implements OnScanner
     }
 
     @Override
-    public void OnScannerCompletion(Result rawResult, ParsedResult parsedResult, Bitmap barcode) {
+    public void onScannerCompletion(Result rawResult, ParsedResult parsedResult, Bitmap barcode) {
         if (rawResult == null) {
             Toast.makeText(this, "未发现二维码", Toast.LENGTH_SHORT).show();
             finish();
