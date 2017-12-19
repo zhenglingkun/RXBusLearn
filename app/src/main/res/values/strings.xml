@@ -6,6 +6,8 @@
     <string name="cancel">取消</string>
     <string name="learn">库存总量\n%1$d</string>
     <string name="msg_camera_framework_bug">照相权限已经被禁用，您可以尝试在设置中打开此权限</string>
+    <string name="please_aim_at_product_code">请对准商品条码</string>
+    <string name="scan_good_open_light">开灯</string>
 
     <string-array name="letters">
         <item>A</item>

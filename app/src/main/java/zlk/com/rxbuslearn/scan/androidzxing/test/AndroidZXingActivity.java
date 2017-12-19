@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.view.View;
 import android.widget.Toast;
 
 import com.google.zxing.Result;
@@ -39,9 +40,9 @@ public class AndroidZXingActivity extends AppCompatActivity implements OnScanner
 
         ScannerOptions.Builder builder = new ScannerOptions.Builder();
         builder.setFrameSize(256, 256)
-                .setFrameCornerLength(22)
+                .setFrameCornerLength(10)
                 .setFrameCornerWidth(2)
-                .setFrameCornerColor(0xff06c1ae)
+                .setFrameCornerColor(ContextCompat.getColor(this, android.R.color.white))
                 .setFrameCornerInside(true)
                 .setLaserLineCenterVertical(true)
                 .setOtherFrameBgRes(ContextCompat.getColor(this, R.color.viewfinder_mask))
@@ -50,11 +51,25 @@ public class AndroidZXingActivity extends AppCompatActivity implements OnScanner
                 .setScanFullScreen(false)
                 .setFrameCornerHide(false)
                 .setScanMode(Scanner.ScanMode.ONE_D_MODE)
-                .setTipText("请联系其它已添加该设备用户获取二维码")
-                .setTipTextSize(19)
-                .setTipTextColor(getResources().getColor(R.color.colorAccent));
+                .setTipText(getString(R.string.please_aim_at_product_code))
+                .setTipTextToFrameTop(true)
+                .setTipTextToFrameMargin(getResources().getDimensionPixelSize(R.dimen.dp15))
+                .setTipTextColor(ContextCompat.getColor(this, android.R.color.white));
 
         mScannerView.setScannerOptions(builder.build());
+
+        findViewById(R.id.tv_open_light).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if ("1".equals(v.getTag().toString())) {
+                    v.setTag("0");
+                    mScannerView.toggleLight(true);
+                } else {
+                    v.setTag("1");
+                    mScannerView.toggleLight(false);
+                }
+            }
+        });
     }
 
     @Override
