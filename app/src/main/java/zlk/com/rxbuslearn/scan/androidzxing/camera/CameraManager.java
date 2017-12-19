@@ -243,8 +243,10 @@ public final class CameraManager {
                 // Called early, before init even finished
                 return null;
             }
-            int height;
+            //扫描框宽度
             int width = findDesiredDimensionInRange(screenResolution.x, MIN_FRAME_WIDTH, MAX_FRAME_WIDTH);
+            //扫描框高度
+            int height;
             //竖屏则为正方形
             if (isPortrait()) {
                 height = width;
@@ -304,7 +306,6 @@ public final class CameraManager {
         return framingRectInPreview;
     }
 
-
     /**
      * Allows third party apps to specify the camera ID, rather than determine
      * it automatically based on available cameras and their orientation.
@@ -341,7 +342,9 @@ public final class CameraManager {
     }
 
     private void createFramingRect(int width, int height, Point screenResolution) {
+        // 扫描框左边距
         int leftOffset = (screenResolution.x - width) / 2;
+        // 扫描框上边距
         int topOffset = (screenResolution.y - height) / 2;
         int top = laserFrameTopMargin;
         if (top == 0)
@@ -371,7 +374,7 @@ public final class CameraManager {
             return null;
         }
         if (scannerOptions.isLaserLineCenterVertical()) {
-            return new PlanarYUVLuminanceSource(data, width, height, rect.left, rect.top, rect.width(), rect.height(), false);
+            return new PlanarYUVLuminanceSource(data, width, height, 0, rect.top + 200, width, rect.height() - 350, false);
         }
         // Go ahead and assume it's YUV rather than die.
         return new PlanarYUVLuminanceSource(data, width, height, rect.left, rect.top, rect.width(), rect.height(), false);
