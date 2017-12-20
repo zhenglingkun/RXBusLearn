@@ -6,15 +6,34 @@
     <zlk.com.rxbuslearn.scan.androidzxing.ScannerView
         android:id="@+id/scanner_view"
         android:layout_width="match_parent"
-        android:layout_height="273dp"/>
+        android:layout_height="match_parent"/>
 
-    <TextView
-        android:id="@+id/tv_open_light"
-        android:layout_width="wrap_content"
+    <RelativeLayout
+        android:id="@+id/rl_scan_area"
+        android:layout_width="match_parent"
+        android:layout_height="273dp"
+        android:background="@android:color/transparent">
+
+        <TextView
+            android:id="@+id/tv_open_light"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:drawableTop="@mipmap/kaideng"
+            android:tag="1"/>
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/rl_scan_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@id/scanner_view"
-        android:layout_centerHorizontal="true"
-        android:drawableTop="@mipmap/kaideng"
-        android:tag="1"/>
+        android:layout_alignParentBottom="true"
+        android:layout_below="@id/rl_scan_area"
+        android:background="@color/background">
+
+
+    </RelativeLayout>
 
 </RelativeLayout>

@@ -50,7 +50,6 @@ public class AndroidZXingHalfActivity extends AppCompatActivity implements OnSca
                 .setLaserLineColor(ContextCompat.getColor(this, R.color.orange_light))
                 .setLaserLineHeight(getResources().getDimensionPixelSize(R.dimen.dp6))
                 .setOtherFrameBgRes(ContextCompat.getColor(this, R.color.viewfinder_mask))
-//                .setHalfScreen(true)
                 .setScanFullScreen(false)
                 .setScanMode(Scanner.ScanMode.ONE_D_MODE)
                 .setTipText("")
