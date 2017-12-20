@@ -14,13 +14,20 @@
         android:id="@+id/intent_bt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"/>
+        android:text="全屏"/>
+
+    <Button
+        android:id="@+id/bt_half_screen"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/intent_bt"
+        android:text="半屏"/>
 
     <TextView
         android:id="@+id/tv_tip"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@id/intent_bt"/>
+        android:layout_below="@id/bt_half_screen"/>
 
     <!--<RelativeLayout-->
     <!--android:layout_width="match_parent"-->

@@ -374,7 +374,13 @@ public final class CameraManager {
             return null;
         }
         if (scannerOptions.isLaserLineCenterVertical()) {
-            return new PlanarYUVLuminanceSource(data, width, height, 0, rect.top + 200, width, rect.height() - 350, false);
+            Log.i(TAG, "buildLuminanceSource: rect.top is " + rect.top);
+            Log.i(TAG, "buildLuminanceSource: rect.bottom is " + rect.bottom);
+            Log.i(TAG, "buildLuminanceSource: rect.height() is " + rect.height());
+            Log.i(TAG, "buildLuminanceSource: height is " + height);
+            return new PlanarYUVLuminanceSource(data, width, height,
+                    0, rect.top + (rect.height() - rect.top) / 2 + dp2px(scannerOptions.getLaserLineHeight()),
+                    width, rect.height() - (height - rect.bottom) / 2 - dp2px(scannerOptions.getLaserLineHeight()), false);
         }
         // Go ahead and assume it's YUV rather than die.
         return new PlanarYUVLuminanceSource(data, width, height, rect.left, rect.top, rect.width(), rect.height(), false);

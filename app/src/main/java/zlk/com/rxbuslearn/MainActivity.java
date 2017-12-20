@@ -42,6 +42,21 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         });
+        findViewById(R.id.bt_half_screen).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (ContextCompat.checkSelfPermission(MainActivity.this,
+                        Manifest.permission.CAMERA)
+                        != PackageManager.PERMISSION_GRANTED) {
+                    //权限还没有授予，需要在这里写申请权限的代码
+                    ActivityCompat.requestPermissions(MainActivity.this,
+                            new String[]{Manifest.permission.CAMERA}, 60);
+                } else {
+                    //权限已经被授予，在这里直接写要执行的相应方法即可
+//                    startActivityForResult(new Intent(MainActivity.this, AndroidZXingActivity.class), REQUEST_CODE_SCANNER);
+                }
+            }
+        });
 
     }
 
