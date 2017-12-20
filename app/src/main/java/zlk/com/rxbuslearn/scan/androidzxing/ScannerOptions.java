@@ -187,16 +187,16 @@ public final class ScannerOptions {
         return cameraZoomRatio;
     }
 
+    public ViewfinderCallback getViewfinderCallback() {
+        return viewfinderCallback;
+    }
+
     public boolean isLaserLineCenterVertical() {
         return laserLineCenterVertical;
     }
 
     public int getOtherFrameBgRes() {
         return otherFrameBgRes;
-    }
-
-    public ViewfinderCallback getViewfinderCallback() {
-        return viewfinderCallback;
     }
 
     public static final class Builder {
@@ -530,5 +530,6 @@ public final class ScannerOptions {
             options.otherFrameBgRes = otherFrameBgRes;
             return this;
         }
+
     }
 }

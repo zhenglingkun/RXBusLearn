@@ -380,7 +380,7 @@ public final class CameraManager {
             Log.i(TAG, "buildLuminanceSource: height is " + height);
             return new PlanarYUVLuminanceSource(data, width, height,
                     0, rect.top + (rect.height() - rect.top) / 2 + dp2px(scannerOptions.getLaserLineHeight()),
-                    width, rect.height() - (height - rect.bottom) / 2 - dp2px(scannerOptions.getLaserLineHeight()), false);
+                    width, rect.height() / 2 - dp2px(scannerOptions.getLaserLineHeight()), false);
         }
         // Go ahead and assume it's YUV rather than die.
         return new PlanarYUVLuminanceSource(data, width, height, rect.left, rect.top, rect.width(), rect.height(), false);
@@ -405,8 +405,7 @@ public final class CameraManager {
     }
 
     public boolean isPortrait() {
-        return context.getResources().getConfiguration().orientation ==
-                Configuration.ORIENTATION_PORTRAIT;
+        return context.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT;
     }
 
     public Point getScreenResolution() {

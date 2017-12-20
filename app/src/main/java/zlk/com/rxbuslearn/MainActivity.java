@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import zlk.com.rxbuslearn.scan.androidzxing.common.Scanner;
 import zlk.com.rxbuslearn.scan.androidzxing.test.AndroidZXingActivity;
+import zlk.com.rxbuslearn.scan.androidzxing.test.AndroidZXingHalfActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -53,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
                             new String[]{Manifest.permission.CAMERA}, 60);
                 } else {
                     //权限已经被授予，在这里直接写要执行的相应方法即可
-//                    startActivityForResult(new Intent(MainActivity.this, AndroidZXingActivity.class), REQUEST_CODE_SCANNER);
+                    startActivityForResult(new Intent(MainActivity.this, AndroidZXingHalfActivity.class), REQUEST_CODE_SCANNER);
                 }
             }
         });

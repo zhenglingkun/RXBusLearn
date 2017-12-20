@@ -20,11 +20,11 @@ import zlk.com.rxbuslearn.scan.androidzxing.ScannerView;
 import zlk.com.rxbuslearn.scan.androidzxing.common.Scanner;
 
 /**
- * Created by ice on 2017/12/18 0018.
+ * Created by ice on 2017/12/20 0020.
  * this is a xxx for
  */
 
-public class AndroidZXingActivity extends AppCompatActivity implements OnScannerCompletionListener {
+public class AndroidZXingHalfActivity extends AppCompatActivity implements OnScannerCompletionListener {
 
     private ScannerView mScannerView;
 
@@ -33,27 +33,29 @@ public class AndroidZXingActivity extends AppCompatActivity implements OnScanner
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_android_zxing);
+        setContentView(R.layout.activity_android_zxing_half);
 
         mScannerView = (ScannerView) findViewById(R.id.scanner_view);
         mScannerView.setOnScannerCompletionListener(this);
 
         ScannerOptions.Builder builder = new ScannerOptions.Builder();
-        builder.setFrameSize(256, 256)
+        builder.setFrameSize(256, 150)
                 .setFrameCornerLength(10)
                 .setFrameCornerWidth(2)
                 .setFrameCornerColor(ContextCompat.getColor(this, android.R.color.white))
                 .setFrameCornerInside(true)
                 .setFrameCornerHide(false)
+                .setFrameTopMargin(getResources().getDimensionPixelSize(R.dimen.dp15))
                 .setLaserLineCenterVertical(true)
                 .setLaserLineColor(ContextCompat.getColor(this, R.color.orange_light))
                 .setLaserLineHeight(getResources().getDimensionPixelSize(R.dimen.dp6))
                 .setOtherFrameBgRes(ContextCompat.getColor(this, R.color.viewfinder_mask))
+//                .setHalfScreen(true)
                 .setScanFullScreen(false)
                 .setScanMode(Scanner.ScanMode.ONE_D_MODE)
-                .setTipText(getString(R.string.please_aim_at_product_code))
+                .setTipText("")
                 .setTipTextToFrameTop(true)
-                .setTipTextToFrameMargin(getResources().getDimensionPixelSize(R.dimen.dp15))
+                .setTipTextToFrameMargin(getResources().getDimensionPixelSize(R.dimen.dp0))
                 .setTipTextColor(ContextCompat.getColor(this, android.R.color.white));
 
         mScannerView.setScannerOptions(builder.build());
@@ -103,4 +105,5 @@ public class AndroidZXingActivity extends AppCompatActivity implements OnScanner
         setResult(Activity.RESULT_OK, intent);
         finish();
     }
+
 }

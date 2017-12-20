@@ -38,6 +38,7 @@
         <activity android:name=".scan.ScanHalfScreenActivity"/>
         <activity android:name=".scan.list.ScanListActivity"/>
         <activity android:name=".scan.androidzxing.test.AndroidZXingActivity"/>
+        <activity android:name=".scan.androidzxing.test.AndroidZXingHalfActivity"/>
     </application>
 
 </manifest>
