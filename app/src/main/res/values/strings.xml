@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">RXBusLearn</string>
+    <string name="app_name">扫描Demo</string>
     <string name="back">返回</string>
     <string name="dialog_learn">Dialog Learn</string>
     <string name="delete_bank_card_dialog">删除银行卡</string>

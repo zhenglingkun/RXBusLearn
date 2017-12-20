@@ -6,7 +6,7 @@ android {
     buildToolsVersion '25.0.0'
 
     defaultConfig {
-        applicationId "zlk.com.rxbuslearn"
+        applicationId "com.zlk.rxbuslearn"
         minSdkVersion 19
         targetSdkVersion 23
         versionCode 1
