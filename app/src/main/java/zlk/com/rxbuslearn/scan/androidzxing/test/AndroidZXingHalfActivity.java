@@ -56,7 +56,6 @@ public class AndroidZXingHalfActivity extends AppCompatActivity implements OnSca
                 .setTipTextToFrameTop(true)
                 .setTipTextToFrameMargin(getResources().getDimensionPixelSize(R.dimen.dp0))
                 .setTipTextColor(ContextCompat.getColor(this, android.R.color.white));
-
         mScannerView.setScannerOptions(builder.build());
 
         findViewById(R.id.tv_open_light).setOnClickListener(new View.OnClickListener() {

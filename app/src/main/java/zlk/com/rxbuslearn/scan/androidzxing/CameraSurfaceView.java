@@ -3,6 +3,7 @@ package zlk.com.rxbuslearn.scan.androidzxing;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.Point;
+import android.os.Handler;
 import android.util.Log;
 import android.view.SurfaceHolder;
 import android.view.SurfaceView;
@@ -25,6 +26,7 @@ class CameraSurfaceView extends SurfaceView implements SurfaceHolder.Callback, S
     private boolean hasSurface;
     private CameraManager mCameraManager;
     private ScannerViewHandler mScannerViewHandler;
+    private Handler mHandler = new Handler();
 
     private boolean lightMode = false;//闪光灯，默认关闭
     private ScannerOptions mScannerOptions;
@@ -40,12 +42,17 @@ class CameraSurfaceView extends SurfaceView implements SurfaceHolder.Callback, S
         this.mCameraManager = new CameraManager(getContext(), mScannerOptions);
         this.mScannerViewHandler = null;
 
-        SurfaceHolder surfaceHolder = getHolder();
+        final SurfaceHolder surfaceHolder = getHolder();
         if (hasSurface) {
             // The activity was paused but not stopped, so the surface still
             // exists. Therefore
             // surfaceCreated() won't be called, so init the camera here.
-            initCamera(surfaceHolder);
+            mHandler.post(new Runnable() {
+                @Override
+                public void run() {
+                    initCamera(surfaceHolder);
+                }
+            });
         } else {
             // Install the callback and wait for surfaceCreated() to init the
             // camera.
@@ -97,13 +104,18 @@ class CameraSurfaceView extends SurfaceView implements SurfaceHolder.Callback, S
     }
 
     @Override
-    public void surfaceCreated(SurfaceHolder surfaceHolder) {
+    public void surfaceCreated(final SurfaceHolder surfaceHolder) {
 //        if (surfaceHolder == null) {
 //            Log.e(TAG, "*** WARNING *** surfaceCreated() gave us a null surface!");
 //        }
         if (!hasSurface) {
             hasSurface = true;
-            initCamera(surfaceHolder);
+            mHandler.post(new Runnable() {
+                @Override
+                public void run() {
+                    initCamera(surfaceHolder);
+                }
+            });
         }
     }
 

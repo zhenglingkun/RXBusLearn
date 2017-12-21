@@ -73,7 +73,6 @@ public class ScannerView extends RelativeLayout {
         mViewfinderView.laserLineBitmapRecycle();
     }
 
-
     /**
      * A valid barcode has been found, so give an indication of success and show
      * the results.
