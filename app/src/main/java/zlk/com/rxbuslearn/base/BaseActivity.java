@@ -44,4 +44,16 @@ public class BaseActivity extends AppCompatActivity {
         startActivityForResult(intent, requestCode);
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        FrontApplication.setIsAppRunningFront(true);
+    }
+
+    @Override
+    public void onPause() {
+        super.onPause();
+        FrontApplication.setIsAppRunningFront(false);
+    }
+
 }
