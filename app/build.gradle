@@ -1,9 +1,9 @@
 apply plugin: 'com.android.application'
-apply plugin: 'android-apt'
+// apply plugin: 'android-apt'
 
 android {
     compileSdkVersion 23
-    buildToolsVersion '25.0.0'
+    buildToolsVersion '27.0.3'
 
     defaultConfig {
         applicationId "com.zlk.rxbuslearn"
@@ -21,23 +21,23 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-    testCompile 'junit:junit:4.12'
-    compile 'com.android.support:appcompat-v7:23.4.0'
-    compile 'com.android.support:recyclerview-v7:23.4.0'
-    compile 'io.reactivex:rxandroid:1.2.1'
-    compile 'io.reactivex:rxjava:1.1.6'
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    testImplementation 'junit:junit:4.12'
+    implementation 'com.android.support:appcompat-v7:23.4.0'
+    implementation 'com.android.support:recyclerview-v7:23.4.0'
+    implementation 'io.reactivex:rxandroid:1.2.1'
+    implementation 'io.reactivex:rxjava:1.1.6'
 
-    compile 'com.jakewharton:butterknife:8.1.0'
-    apt 'com.jakewharton:butterknife-compiler:8.1.0'
+    implementation 'com.jakewharton:butterknife:8.1.0'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.1.0'
 
-    compile 'com.github.bumptech.glide:glide:3.8.0'
+    implementation 'com.github.bumptech.glide:glide:3.8.0'
 
-    compile 'pl.droidsonroids.gif:android-gif-drawable:1.2.8'
+    implementation 'pl.droidsonroids.gif:android-gif-drawable:1.2.8'
 
-    compile project(':swipetoloadlayout')
+    implementation project(':swipetoloadlayout')
 
-    compile 'com.google.zxing:core:3.3.0'
+    implementation 'com.google.zxing:core:3.3.0'
 //    compile 'com.google.zxing:core:3.2.1'
 //    compile 'servyou:scan.zxing:2.1.1@aar'
 //    compile 'servyou:scan.qrcode:2.1.1@aar'
