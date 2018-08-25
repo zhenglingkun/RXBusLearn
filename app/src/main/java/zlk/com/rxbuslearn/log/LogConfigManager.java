@@ -34,7 +34,7 @@ public class LogConfigManager {
 
     public void OpenLog() {
         mLogApi.turnCrashLogOn(context);
-        mLogApi.IsShowPhoneInfo(false);
+        mLogApi.IsShowPhoneInfo(true);
         mLogApi.SetCrashDialog("未知错误");
 
         mLogApi.turnDebugLogOn();
@@ -45,6 +45,5 @@ public class LogConfigManager {
         if (mLogApi != null) {
             mLogApi.turnDebugLogOff();
         }
-
     }
 }

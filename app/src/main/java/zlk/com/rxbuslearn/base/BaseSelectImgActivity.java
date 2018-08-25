@@ -23,6 +23,7 @@ import android.widget.Toast;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 
 import zlk.com.rxbuslearn.R;
@@ -170,6 +171,40 @@ public abstract class BaseSelectImgActivity extends AppCompatActivity {
 
     public void delImg() {
         mRemarkImgPath = "";
+    }
+
+    /**
+     * 保存文件，文件名为当前日期
+     */
+    protected void saveBitmap(Bitmap bitmap, String bitName) {
+        String fileName;
+        File file;
+        if (Build.BRAND.equals("Xiaomi")) { // 小米手机
+            fileName = Environment.getExternalStorageDirectory().getPath() + "/DCIM/Camera/" + bitName;
+        } else {  // Meizu 、Oppo
+            fileName = Environment.getExternalStorageDirectory().getPath() + "/DCIM/" + bitName;
+        }
+        file = new File(fileName);
+        if (file.exists()) {
+            file.delete();
+        }
+        FileOutputStream out;
+        try {
+            out = new FileOutputStream(file);
+            // 格式为 JPEG，照相机拍出的图片为JPEG格式的，PNG格式的不能显示在相册中
+            if (bitmap.compress(Bitmap.CompressFormat.JPEG, 90, out)) {
+                out.flush();
+                out.close();
+                // 插入图库
+                MediaStore.Images.Media.insertImage(this.getContentResolver(), file.getAbsolutePath(), bitName, null);
+            }
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        // 发送广播，通知刷新图库的显示
+        this.sendBroadcast(new Intent(Intent.ACTION_MEDIA_SCANNER_SCAN_FILE, Uri.parse("file://" + fileName)));
     }
 
     private class RemarkPhotoTask extends AsyncTask<Uri, Integer, Bitmap> {
