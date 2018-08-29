@@ -14,6 +14,8 @@
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
         <item name="toolbarStyle">@style/CustomToolbar</item>
+        <!--避免主题背景和每个界面的背景色过度重绘-->
+        <item name="android:windowBackground">@null</item>
     </style>
 
     <style name="CustomToolbar" parent="Widget.AppCompat.Toolbar">
