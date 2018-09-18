@@ -6,7 +6,6 @@ import android.widget.Toast;
 import java.io.FileNotFoundException;
 import java.io.PrintStream;
 
-import zlk.com.rxbuslearn.log.LogConfigManager;
 import zlk.com.rxbuslearn.util.FileUtils;
 import zlk.com.rxbuslearn.util.LogUtil;
 
@@ -22,7 +21,7 @@ public class BaseApplication extends Application {
     @Override
     public void onCreate() {
         super.onCreate();
-        LogConfigManager.getInstance(this, "KClientLog").OpenLog();
+//        LogConfigManager.getInstance(this, "KClientLog").OpenLog();
 
         configUncaughtExceptionHandler();
     }

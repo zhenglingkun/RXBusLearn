@@ -1,19 +1,14 @@
 package zlk.com.rxbuslearn;
 
-import android.Manifest;
 import android.app.Activity;
 import android.content.Intent;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
-import android.support.v4.app.ActivityCompat;
-import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.TextView;
 
 import zlk.com.rxbuslearn.scan.androidzxing.common.Scanner;
-import zlk.com.rxbuslearn.scan.androidzxing.test.AndroidZXingActivity;
-import zlk.com.rxbuslearn.scan.androidzxing.test.AndroidZXingHalfActivity;
+import zlk.com.rxbuslearn.wgallery.MainWGalleryActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -27,35 +22,36 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        mTvTip = (TextView) findViewById(R.id.tv_tip);
+        mTvTip = findViewById(R.id.tv_tip);
         findViewById(R.id.intent_bt).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (ContextCompat.checkSelfPermission(MainActivity.this,
-                        Manifest.permission.CAMERA)
-                        != PackageManager.PERMISSION_GRANTED) {
-                    //权限还没有授予，需要在这里写申请权限的代码
-                    ActivityCompat.requestPermissions(MainActivity.this,
-                            new String[]{Manifest.permission.CAMERA}, 60);
-                } else {
-                    //权限已经被授予，在这里直接写要执行的相应方法即可
-                    startActivityForResult(new Intent(MainActivity.this, AndroidZXingActivity.class), REQUEST_CODE_SCANNER);
-                }
+                startActivity(new Intent(MainActivity.this, MainWGalleryActivity.class));
+//                if (ContextCompat.checkSelfPermission(MainActivity.this,
+//                        Manifest.permission.CAMERA)
+//                        != PackageManager.PERMISSION_GRANTED) {
+//                    //权限还没有授予，需要在这里写申请权限的代码
+//                    ActivityCompat.requestPermissions(MainActivity.this,
+//                            new String[]{Manifest.permission.CAMERA}, 60);
+//                } else {
+//                    //权限已经被授予，在这里直接写要执行的相应方法即可
+//                    startActivityForResult(new Intent(MainActivity.this, AndroidZXingActivity.class), REQUEST_CODE_SCANNER);
+//                }
             }
         });
         findViewById(R.id.bt_half_screen).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if (ContextCompat.checkSelfPermission(MainActivity.this,
-                        Manifest.permission.CAMERA)
-                        != PackageManager.PERMISSION_GRANTED) {
-                    //权限还没有授予，需要在这里写申请权限的代码
-                    ActivityCompat.requestPermissions(MainActivity.this,
-                            new String[]{Manifest.permission.CAMERA}, 60);
-                } else {
-                    //权限已经被授予，在这里直接写要执行的相应方法即可
-                    startActivityForResult(new Intent(MainActivity.this, AndroidZXingHalfActivity.class), REQUEST_CODE_SCANNER);
-                }
+//                if (ContextCompat.checkSelfPermission(MainActivity.this,
+//                        Manifest.permission.CAMERA)
+//                        != PackageManager.PERMISSION_GRANTED) {
+//                    //权限还没有授予，需要在这里写申请权限的代码
+//                    ActivityCompat.requestPermissions(MainActivity.this,
+//                            new String[]{Manifest.permission.CAMERA}, 60);
+//                } else {
+//                    //权限已经被授予，在这里直接写要执行的相应方法即可
+//                    startActivityForResult(new Intent(MainActivity.this, AndroidZXingHalfActivity.class), REQUEST_CODE_SCANNER);
+//                }
             }
         });
 

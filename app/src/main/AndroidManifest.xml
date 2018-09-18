@@ -7,12 +7,14 @@
     <uses-permission android:name="android.permission.CAMERA"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
 
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:supportsRtl="true"
+        android:name=".base.BaseApplication"
         android:theme="@style/AppTheme">
 
         <!--官方全面屏适配方案：其中ratio_float为浮点数，官方建议为2.1或更大，因为18.5：9=2.055555555……，如果日后出现纵横比更大的手机，此值将会更大。-->
@@ -44,6 +46,10 @@
         <activity android:name=".scan.list.ScanListActivity"/>
         <activity android:name=".scan.androidzxing.test.AndroidZXingActivity"/>
         <activity android:name=".scan.androidzxing.test.AndroidZXingHalfActivity"/>
+        <activity android:name=".wgallery.MainWGalleryActivity"/>
+        <activity android:name=".wgallery.SimpleWGalleryActivity"/>
+        <activity android:name=".wgallery.WithWGalleryAdapterActivity"/>
+        <activity android:name=".wgallery.AllAty"/>
     </application>
 
 </manifest>
