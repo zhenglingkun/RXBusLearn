@@ -3,9 +3,12 @@ package zlk.com.rxbuslearn.wgallery;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
+import android.view.View;
 import android.widget.RadioGroup;
 import android.widget.SeekBar;
 
+import com.us.feras.ecogallery.EcoGalleryAdapterView;
 import com.zlk.wgallery.WGallery;
 
 import zlk.com.rxbuslearn.R;
@@ -34,6 +37,18 @@ public class AllAty extends AppCompatActivity implements RadioGroup.OnCheckedCha
         setContentView(R.layout.activity_wgallery);
         gallery = findViewById(R.id.wgallery);
         gallery.setAdapter(new WGalleryUrlAdapter(mImgUrl));
+        gallery.setSelection(3);
+        gallery.setOnItemSelectedListener(new EcoGalleryAdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(EcoGalleryAdapterView<?> parent, View view, int position, long id) {
+                Log.i("WGallery", "onItemSelected: position = " + position);
+            }
+
+            @Override
+            public void onNothingSelected(EcoGalleryAdapterView<?> parent) {
+
+            }
+        });
 
         RadioGroup rg = findViewById(R.id.rg);
         rg.check(R.id.rbtn3);

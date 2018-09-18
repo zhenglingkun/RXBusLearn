@@ -56,7 +56,7 @@ public class WGalleryUrlAdapter extends BaseAdapter implements IWGalleryAdapter 
         } else {
             holder = (ViewHolder) convertView.getTag();
         }
-        Log.i("WGalleryUrlAdapter", "getView: mUrl[" + position + "] " + mUrl[position]);
+        Log.i("WGallery", "getView: mUrl[" + position + "] " + mUrl[position]);
         Glide.with(convertView.getContext())
                 .load(mUrl[position])
                 .into(holder.ivShow);
