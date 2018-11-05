@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
 //                    //权限已经被授予，在这里直接写要执行的相应方法即可
 //                    startActivityForResult(new Intent(MainActivity.this, AndroidZXingActivity.class), REQUEST_CODE_SCANNER);
 //                }
+                overridePendingTransition(R.anim.slide_right_in, R.anim.slide_left_out);
             }
         });
         findViewById(R.id.bt_half_screen).setOnClickListener(new View.OnClickListener() {
