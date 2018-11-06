@@ -39,4 +39,6 @@ dependencies {
     implementation project(':wgallery')
 
     implementation 'com.google.zxing:core:3.3.0'
+
+    implementation files('libs/BASE64Encoder.jar')
 }
