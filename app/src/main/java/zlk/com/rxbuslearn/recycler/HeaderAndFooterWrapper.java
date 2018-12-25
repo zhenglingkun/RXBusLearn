@@ -46,7 +46,6 @@ public class HeaderAndFooterWrapper<T> extends BaseHeaderCountAdapter {
         return mInnerAdapter.getItemCount();
     }
 
-
     @Override
     public void onBindViewHolder(BaseViewHolder holder, int position) {
         if (isHeaderViewPos(position)) {
@@ -97,7 +96,6 @@ public class HeaderAndFooterWrapper<T> extends BaseHeaderCountAdapter {
     private boolean isFooterViewPos(int position) {
         return position >= getHeadersCount() + getRealItemCount();
     }
-
 
     public void addHeaderView(View view) {
         mHeaderViews.put(mHeaderViews.size() + BASE_ITEM_TYPE_HEADER, view);
